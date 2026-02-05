@@ -1,0 +1,8 @@
+services:
+  trading-bot:
+    build: .
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+    stdin_open: true
+    tty: true
