@@ -3,6 +3,7 @@ from bot.logger import log_api_call, log_error
 
 def place_market_order(symbol, side, quantity):
     client = get_futures_client()
+    log_api_call("API REQUEST", {"symbol": symbol, "side": side, "type": "MARKET", "quantity": quantity})
     try:
         response = client.futures_create_order(
             symbol=symbol.upper(),
@@ -18,6 +19,7 @@ def place_market_order(symbol, side, quantity):
     
 def place_limit_order(symbol, side, quantity, price):
     client = get_futures_client()
+    log_api_call("API REQUEST", {"symbol": symbol, "side": side, "type": "LIMIT", "quantity": quantity, "price": price})
     try:
         response = client.futures_create_order(
             symbol=symbol.upper(),

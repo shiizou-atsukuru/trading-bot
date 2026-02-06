@@ -1,7 +1,7 @@
 import typer
 from bot.orders import place_market_order, place_limit_order
 from bot.validators import validate_input
-from bot.logger import log_api_call, log_error, enable_debug_logging
+from bot.logger import log_error
 
 app = typer.Typer()
 
@@ -13,16 +13,6 @@ def main(
     quantity: float,
     price: float = typer.Option(None, help="Required for limit orders")
 ):
-    enable_debug_logging()
-    request_payload = {
-        "symbol": symbol,
-        "side": side.upper(),
-        "type": order_type.upper(),
-        "quantity": quantity,
-        "price": price
-    }
-    log_api_call("API REQUEST", request_payload)
-
     try:
         validate_input(symbol, side, quantity, price)
     

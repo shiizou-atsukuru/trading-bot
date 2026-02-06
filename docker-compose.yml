@@ -3,5 +3,7 @@ services:
     build: .
     volumes:
       - ./logs:/app/logs
+    ports:
+      - "8501:8501"
     stdin_open: true
     tty: true
